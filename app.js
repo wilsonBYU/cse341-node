@@ -1,8 +1,6 @@
-const compression = require("compression")
 const express = require("express");
 //const bodyParser = require("body-parser");
 const app = express();
-app.use(compression())
 const router = express.Router();
 const Db = require("./src/models/dbClient");
 const db = new Db();
