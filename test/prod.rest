@@ -1,0 +1,6 @@
+############# Production
+###Get all contacts
+GET https://cse341-node-ikhb.onrender.com/contacts
+
+###Get single contact
+GET https://cse341-node-ikhb.onrender.com/contacts/003

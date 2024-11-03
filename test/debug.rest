@@ -1,0 +1,7 @@
+############# Debug
+###Get all contacts
+GET http://localhost:3000/contacts
+
+###Get single contact
+GET http://localhost:3000/contacts/003
+

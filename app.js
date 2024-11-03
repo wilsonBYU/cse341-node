@@ -5,6 +5,11 @@ const router = express.Router();
 const Db = require("./src/models/dbClient");
 const db = new Db();
 
+router.use((req, res, next) => {
+  res.setHeader('Content-Type', 'application/json')
+  next()
+})
+
 router.get("/", (req, res) => {
   res.send("This is the home screen!!");
 });

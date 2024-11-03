@@ -4,15 +4,15 @@ const contactsController = {}
 
 contactsController.getAllContacts = async (req, res) => {
   const contacts = await db.query("cse341", "contacts")
-  res.send(JSON.stringify(contacts));
+  res.status(200).json(contacts);
 }
 
 contactsController.getContact = async (req, res) => {
   const contact = await db.query("cse341", "contacts", {_id : req.params.contact_id})
   if (contact.length > 0) {
-    res.send(JSON.stringify(contact))
+    res.status(200).json(contact)
   } else {
-    res.send(JSON.stringify([{error: "No contact found with the given id"}]))
+    res.status(400).json([{error: "No contact found with the given id"}])
   }
 }
 
