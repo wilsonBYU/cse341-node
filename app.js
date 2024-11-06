@@ -2,8 +2,6 @@ const express = require("express");
 //const bodyParser = require("body-parser");
 const app = express();
 const router = express.Router();
-const Db = require("./src/models/dbClient");
-const db = new Db();
 
 router.use((req, res, next) => {
   res.setHeader('Content-Type', 'application/json')
@@ -14,7 +12,7 @@ router.get("/", (req, res) => {
   res.send("This is the home screen!!");
 });
 
-//app.use(bodyParser.json());
+app.use(express.json());
 app.use("/", router);
 app.use("/movies", require("./src/routes/movies"))
 app.use("/contacts", require("./src/routes/contacts"))

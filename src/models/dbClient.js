@@ -1,4 +1,4 @@
-const {MongoClient} = require("mongodb")
+const {MongoClient} = require('mongodb')
 
 class Db {
   constructor() {
@@ -8,7 +8,7 @@ class Db {
   async test_connection() {
     try {
     await this.client.connect()
-        .then(console.log("Connection established"))
+        .then(console.log('Connection established'))
     } catch (e) {
       console.error(e)
     } finally {
@@ -16,11 +16,20 @@ class Db {
     }
   }
 
-  async query(database, coll,qry = {}, limit=0) {
+  async getCollection(database, coll) {
     try {
       await this.client.connect()
       const db = this.client.db(database)
       const collection = db.collection(coll)
+      return collection
+    } catch (e) {
+      console.error(e)
+    }
+  }
+
+  async get(database, coll,qry = {}, limit=0) {
+    try {
+      const collection = await this.getCollection(database, coll)
       let query = collection.find(qry)
       if (limit) {
         query = query.limit(limit)
@@ -33,6 +42,43 @@ class Db {
       await this.client.close()
     }
   }
+
+  async post(database, coll, data) {
+    try {
+      const collection = await this.getCollection(database, coll)
+      const result = await collection.insertOne(data)
+      return result
+    } catch (e) {
+      console.error(e)
+    } finally {
+      await this.client.close()
+    }
+  }
+
+  async put(database, coll, qry, fields) {
+    try {
+      const collection = await this.getCollection(database, coll)
+      const result = await collection.updateOne(qry, {$set: fields})
+      return result
+    } catch(e){
+      console.error(e)
+    } finally {
+      this.client.close()
+    }
+  }
+
+  async delete(database, coll, qry) {
+    try {
+      const collection = await this.getCollection(database, coll)
+      const result = await collection.deleteOne(qry)
+      return result
+    } catch(e){
+      console.error(e)
+    } finally {
+      this.client.close()
+    }
+  }
+
 }
 
 

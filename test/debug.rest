@@ -1,7 +1,31 @@
 ############# Debug
-###Get all contacts
+###GET all contacts
 GET http://localhost:3000/contacts
 
-###Get single contact
-GET http://localhost:3000/contacts/003
+###GET single contact
+GET http://localhost:3000/contacts/001
 
+###POST new contact
+POST http://localhost:3000/contacts
+Content-Type: application/json
+
+{
+    "firstName": "Grace",
+    "lastName": "Green",
+    "email": "ggreen@emailtest.com",
+    "favoriteColor": "green",
+    "birthday": "1999-08-07T00:00:00Z"
+  }
+
+###PUT method
+PUT http://localhost:3000/contacts/672aedf74c2afc63618aabe7
+Content-Type: application/json
+
+  {
+    "email": "ffields@emailtest.com",
+    "favoriteColor": "green"
+  }
+  
+
+###DELETE method
+DELETE http://localhost:3000/contacts/672aee926c288dab87268d49
