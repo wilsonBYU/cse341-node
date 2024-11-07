@@ -1,16 +1,28 @@
 const express = require("express");
-//const bodyParser = require("body-parser");
 const app = express();
 const router = express.Router();
+const cors = require("cors")
+
+const swaggerUi = require("swagger-ui-express")
+const contactsSwaggerDocument = require("./swaggerfiles/swagger-contacts.json")
+
+
+app.use(cors())
+
+router.use("/contacts/api-docs", function(req, res, next) {
+  contactsSwaggerDocument.host = `${req.get("host")}/contacts`
+  req.swaggerDoc = contactsSwaggerDocument
+  next()
+}, swaggerUi.serveFiles(contactsSwaggerDocument, {}), swaggerUi.setup())
+
+router.get("/", (req, res) => {
+  res.send("This is the home screen!!");
+});
 
 router.use((req, res, next) => {
   res.setHeader('Content-Type', 'application/json')
   next()
 })
-
-router.get("/", (req, res) => {
-  res.send("This is the home screen!!");
-});
 
 app.use(express.json());
 app.use("/", router);

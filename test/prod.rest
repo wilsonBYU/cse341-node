@@ -3,7 +3,7 @@
 GET https://cse341-node-ikhb.onrender.com/contacts
 
 ###Get single contact
-GET https://cse341-node-ikhb.onrender.com/contacts/002
+GET https://cse341-node-ikhb.onrender.com/contacts/672aee926c288dab87268d49
 
 ###POST new contact
 POST https://cse341-node-ikhb.onrender.com/contacts
