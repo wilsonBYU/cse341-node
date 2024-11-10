@@ -11,6 +11,7 @@ app.use(cors())
 
 router.use("/contacts/api-docs", function(req, res, next) {
   contactsSwaggerDocument.host = `${req.get("host")}/contacts`
+  contactsSwaggerDocument.schemes = [req.protocol]
   req.swaggerDoc = contactsSwaggerDocument
   next()
 }, swaggerUi.serveFiles(contactsSwaggerDocument, {}), swaggerUi.setup())

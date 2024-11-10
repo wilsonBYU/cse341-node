@@ -38,7 +38,7 @@ contactsController.update = async (req, res) => {
     const result = await db.put(
       DBNAME,
       CONTACTS,
-      { _id: new ObjectId(req.params.contact_id) },
+      { _id: new ObjectId.createFromHexString(req.params.contact_id) },
       req.body,
     );
     if (result.acknowledged) {

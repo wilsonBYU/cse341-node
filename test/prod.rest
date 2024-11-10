@@ -22,10 +22,10 @@ PUT https://cse341-node-ikhb.onrender.com/contacts/672aedf74c2afc63618aabe7
 Content-Type: application/json
 
   {
-    "email": "ffields@emailtest.com",
-    "favoriteColor": "green"
+    "email": "FFields@emailtest.com",
+    "favoriteColor": "orange"
   }
   
 
 ###DELETE method
-DELETE https://cse341-node-ikhb.onrender.com/contacts/672aee926c288dab87268d49
+DELETE https://cse341-node-ikhb.onrender.com/contacts/672af0d11d542ee5c0634c90
