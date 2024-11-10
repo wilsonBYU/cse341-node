@@ -4,7 +4,10 @@ const doc = {
   info: {
     title: "Contacts API",
     description: "CSE341 Contacts API - Wilson Romero"
-  }
+  },
+  schemes: [
+    "http", "https"
+  ],
 }
 
 const outputFile= `./swaggerfiles/swagger-${process.argv[2]}.json`
