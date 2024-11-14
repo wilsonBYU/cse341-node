@@ -36,7 +36,7 @@ class Db {
       const query_result = await query.toArray();
       return query_result;
     } catch (e) {
-      console.error(e);
+      throw({code: 400, error: e || "No user was found with the given ID"})
     } finally {
       await this.client.close();
     }
